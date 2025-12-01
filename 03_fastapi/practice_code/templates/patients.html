@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patients List</title>
+    <link rel="stylesheet" href="/static/patients.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <header>
+            <h1>Patients List</h1>
+            <p>Data loaded from FastAPI</p>
+        </header>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/patients_page">Patients</a>
+        </nav>
+
+        <section class="content">
+            <h2>All Patients</h2>
+
+            <table id="patientsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>City</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Height</th>
+                        <th>Weight</th>
+                        <th>BMI</th>
+                        <th>Verdict</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <!-- rows load automatically -->
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+
+    <script>
+        async function loadPatients() {
+            const res = await fetch('/patients');
+            const data = await res.json();
+            const patients = data.patients;
+            const tbody = document.querySelector('#patientsTable tbody');
+
+            Object.keys(patients).forEach(id => {
+                const p = patients[id];
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${id}</td>
+                    <td>${p.name}</td>
+                    <td>${p.city}</td>
+                    <td>${p.age}</td>
+                    <td>${p.gender}</td>
+                    <td>${p.height}</td>
+                    <td>${p.weight}</td>
+                    <td>${p.bmi}</td>
+                    <td>${p.verdict}</td>
+                `;
+
+                tbody.appendChild(row);
+            });
+        }
+
+        loadPatients();
+    </script>
+
+</body>
+</html>
