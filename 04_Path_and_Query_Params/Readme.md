@@ -12,17 +12,18 @@
 
 # HTTP Status Code
 <p align="center">
-  <img src="Http1.png" width="600">
+  <img src="slides/Http1.png" width="600">
 </p>
 <p align="center">
-  <img src="Http2.png" width="600">
+  <img src="slides/Http2.png" width="600">
 </p>
 <p align="center">
-  <img src="Http3.png" width="600">
+  <img src="slides/Http3.png" width="600">
 </p>
 <p align="center">
-  <img src="Http4.png" width="600">
+  <img src="slides/Http4.png" width="600">
 </p>
 
 # Query Parameter 
-![QP ](QP.png)
+![QP ](slides/QP.png)
+![QP ](slides/Query2.png)
