@@ -14,6 +14,7 @@ class Patient(BaseModel):
         return model
 
 def patient_data(patient: Patient):
+    print('successful')
     print(patient.name)
     print(patient.age)
     print(patient.contact_details)
