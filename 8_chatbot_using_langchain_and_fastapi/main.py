@@ -1,15 +1,10 @@
 from fastapi import FastAPI
-from fastapi.responses import JSONResponse
-from config import UserQuestion
-from chain import chatbot
-from dotenv import load_dotenv
-load_dotenv()
+from chatbot_router import router
 
 app = FastAPI()
 
-chain = chatbot()
-@app.post('/chatbot')
-def chatbot(question: UserQuestion):
-    answer = chain.invoke(question)
-    return JSONResponse(status_code=200, content={'message': answer})
+@app.get('/')
+def home():
+    return {'message':'Chatbot'}
 
+app.include_router(router, prefix="/chatbot")
